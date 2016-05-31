@@ -1,4 +1,6 @@
 // Enemies our player must avoid
+
+//var Enemy is the Enemy class, taking x, y and speed as parameters.
 var Enemy = function(x, y , speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -13,6 +15,8 @@ this.speed = speed;
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+//In the update method, if the enemy reaches the right end of the canvas it will be returned back the left side 
+// of it.
 Enemy.prototype.update = function(dt) {
 
 this.x += this.speed * dt;
@@ -35,14 +39,16 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(){
+//The Player class object:
+var Player = function(x,y){
 
     this.sprite = 'images/char-boy.png';
-    this.x = 200;
-    this.y = 300;
+    this.x = x;
+    this.y = y;
 
 }
-
+//When the player reaches the river the player wins and informed through the alert window.
+//the checkCollisions property is called within the update property.
 Player.prototype.update = function(dt){
 this.checkCollisions();
 this.x*dt;
@@ -59,7 +65,7 @@ Player.prototype.render = function(){
  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
 };
-
+//The handleInput property moves the player instance in the pressed direction by the user. 
 Player.prototype.handleInput = function(allowedKeys){
     if (allowedKeys == 'left'){
         this.x -= 10;
@@ -93,15 +99,15 @@ var enemy = allEnemies[i];
 
             };
 
-
+//Instantiates the Enemies anfd pushes them into the allEnemies array.
 var allEnemies = [];
 for (var i=6; i >= 1; i--){
 var enemy = new Enemy(0, [i]*35, (Math.random()*100)+40);
   allEnemies.push(enemy);
   i--;
 };
-
-var player = new Player();
+//Instantiates the player object
+var player = new Player(200, 300);
 
 
 
