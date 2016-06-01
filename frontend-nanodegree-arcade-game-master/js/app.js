@@ -1,12 +1,21 @@
+/*The x and y for the Player and Enemy classes will be inherited from 
+Object.prototype.move property.*/ 
+Object.prototype.move = function(x,y){
+
+    this.x = x;
+    this.y = y;
+};
+
 // Enemies our player must avoid
 
 //var Enemy is the Enemy class, taking x, y and speed as parameters.
-var Enemy = function(x, y , speed) {
+var Enemy = function(speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-this.x = x;
-this.y = y;
+
 this.speed = speed;
+Enemy.move();
+
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -40,13 +49,12 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 //The Player class object:
-var Player = function(x,y){
+var Player = function(){
 
     this.sprite = 'images/char-boy.png';
-    this.x = x;
-    this.y = y;
+Player.move();
 
-}
+};
 //When the player reaches the river the player wins and informed through the alert window.
 //the checkCollisions property is called within the update property.
 Player.prototype.update = function(dt){
@@ -99,10 +107,10 @@ var enemy = allEnemies[i];
 
             };
 
-//Instantiates the Enemies anfd pushes them into the allEnemies array.
+//Instantiates the Enemies and pushes them into the allEnemies array.
 var allEnemies = [];
 for (var i=6; i >= 1; i--){
-var enemy = new Enemy(0, [i]*35, (Math.random()*100)+40);
+var enemy = new Enemy((Math.random()*100)+40, 0, [i]*35 );
   allEnemies.push(enemy);
   i--;
 };
