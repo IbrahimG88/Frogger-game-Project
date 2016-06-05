@@ -1,7 +1,7 @@
 # Frogger-game-Project
 
 ##How to run the game:
-*Open the index.html file.
+* Open the index.html file.
 
 ##How to play the Game:
 
