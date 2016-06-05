@@ -1,9 +1,9 @@
 # Frogger-game-Project
 
-##How to run the game:
+##To run the game:
 * Open the index.html file.
 
-##How to play the Game:
+##Playing the Game:
 
 * Use the keyboard arrows to move the player in any of the four directions.
 * Avoid getting hit by the bugs.
